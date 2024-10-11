@@ -40,6 +40,14 @@ public class Metodos {
             Lista.add(e);
             System.out.println("¿desea agregar mas estudiantes a la lista? 1: SI, 2: NO ");
             opt = sc.nextInt();
+            while (opt <= 0 || opt > 2) {
+                System.out.println("opcion incorrecta");
+                System.out.println("¿desea agregar mas estudiantes a la lista? 1: SI, 2: NO ");
+                while (!sc.hasNextInt()) {
+                    System.out.println("ingrese una opcion valida");
+                }
+                opt = sc.nextInt();
+            }
             if (opt == 2) {
                 continuar = false;
             }
@@ -99,6 +107,14 @@ public class Metodos {
             Lista.add(e);
             System.out.println("¿desea agregar mas estudiantes a la lista? 1: SI, 2: NO ");
             opt = sc.nextInt();
+            while (opt <= 0 || opt > 2) {
+                System.out.println("opcion incorrecta");
+                System.out.println("¿desea agregar mas estudiantes a la lista? 1: SI, 2: NO ");
+                while (!sc.hasNextInt()) {
+                    System.out.println("ingrese una opcion valida");
+                }
+                opt = sc.nextInt();
+            }
             if (opt == 2) {
                 continuar = false;
             }
@@ -121,5 +137,8 @@ public class Metodos {
         }
 
     }
+
+    
+
 
 }
