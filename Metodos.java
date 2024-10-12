@@ -8,7 +8,7 @@ public class Metodos {
 
     public LinkedList<EstudianteIngenieria> LLenarListaEstudianteING() {
 
-        boolean continuar = true;        
+        boolean continuar = true;
         LinkedList<EstudianteIngenieria> Lista = new LinkedList<>();
         String Nombre;
         String Cedula;
@@ -17,12 +17,17 @@ public class Metodos {
         int Numerosemestre;
         float Promedio;
         String Serial;
-        
+
         while (continuar) {
             System.out.println("=================================================================================");
             System.out.println("========== Hola, aqui ingresaras los datos del estudiante de ingenieria =========");
             System.out.println("Ingrese el nombre del estudiante");
+            while (!sc.hasNext()) {
+                System.out.println("Los nombre no deben de tener numero o caracteres especiales");
+                sc.nextLine();
+            }
             Nombre = sc.next();
+
             System.out.println("Ingrese la cedula");
             Cedula = sc.next();
             System.out.println("ingrese el Apellido");
@@ -30,13 +35,24 @@ public class Metodos {
             System.out.println("Ingrese el telefono del estudiante");
             Telefono = sc.next();
             System.out.println("Ingrese el semestre del estudiante");
+            while (!sc.hasNextInt()) {
+                System.out.println("el semestre debe de ser un numero entero");
+                sc.nextLine();
+            }
             Numerosemestre = sc.nextInt();
+
             System.out.println("Ingrese el promedio acumulado del estudiante");
+            while (!sc.hasNextFloat()) {
+                System.out.println("El promedio debe de ser un float y usar ¨,¨ ");
+                sc.hasNextLine();
+            }
             Promedio = sc.nextFloat();
+
             System.out.println("Ingrese el Serial del estudiante");
             Serial = sc.next();
             System.out.println();
-            EstudianteIngenieria e = new EstudianteIngenieria(Nombre, Cedula, Apellido, Telefono, Numerosemestre, Promedio, Serial);
+            EstudianteIngenieria e = new EstudianteIngenieria(Nombre, Cedula, Apellido, Telefono, Numerosemestre,
+                    Promedio, Serial);
             Lista.add(e);
             System.out.println("¿desea agregar mas estudiantes a la lista? 1: SI, 2: NO ");
             opt = sc.nextInt();
@@ -55,9 +71,9 @@ public class Metodos {
         return Lista;
     }
 
-    public void MostrarlistaING(LinkedList<EstudianteIngenieria> Lista){
+    public void MostrarlistaING(LinkedList<EstudianteIngenieria> Lista) {
 
-        for(EstudianteIngenieria estudianteing : Lista ){
+        for (EstudianteIngenieria estudianteing : Lista) {
 
             System.out.println("===============================================");
             System.out.println("Nombre: " + estudianteing.getNombre());
@@ -72,9 +88,9 @@ public class Metodos {
 
     }
 
-    public LinkedList<EstudianteDiseño> LLenarListaEstudianteDIS(){
+    public LinkedList<EstudianteDiseño> LLenarListaEstudianteDIS() {
 
-        boolean continuar = true;        
+        boolean continuar = true;
         LinkedList<EstudianteDiseño> Lista = new LinkedList<>();
         String Cedula;
         String Nombre;
@@ -84,7 +100,7 @@ public class Metodos {
         int Cantasignatura;
         int Serial;
 
-            while (continuar) {
+        while (continuar) {
             System.out.println("=============================================================================");
             System.out.println("========== Hola, aqui ingresaras los datos del estudiante de Diseño =========");
             System.out.println("Ingrese el nombre del estudiante");
@@ -97,12 +113,24 @@ public class Metodos {
             Telefono = sc.next();
             System.out.println("Ingrese la modalidad de estudio del estudiante");
             Modalidadestudio = sc.next();
+
             System.out.println("¿Cuantas asignaturas esta cursando el estudiante?");
+            while (!sc.hasNextInt()) {
+                System.out.println("la cantidad de asignatuas debe de ser un numero entero");
+                sc.nextLine();
+            }
             Cantasignatura = sc.nextInt();
+
             System.out.println("Ingrese el serial del estudiante");
+            while (!sc.hasNextInt()) {
+                System.out.println("el serial debe de ser un numero entero");
+                sc.nextLine();
+            }
             Serial = sc.nextInt();
+
             System.out.println();
-            EstudianteDiseño e = new EstudianteDiseño(Cedula, Nombre, Apellido, Telefono, Modalidadestudio, Cantasignatura, Serial);
+            EstudianteDiseño e = new EstudianteDiseño(Cedula, Nombre, Apellido, Telefono, Modalidadestudio,
+                    Cantasignatura, Serial);
             Lista.add(e);
             System.out.println("¿desea agregar mas estudiantes a la lista? 1: SI, 2: NO ");
             opt = sc.nextInt();
@@ -118,14 +146,14 @@ public class Metodos {
                 continuar = false;
             }
         }
-        
+
         return Lista;
 
     }
 
-    public void MostrarlistaDIS(LinkedList<EstudianteDiseño> Lista){
+    public void MostrarlistaDIS(LinkedList<EstudianteDiseño> Lista) {
 
-        for(EstudianteDiseño estudiantedis : Lista){
+        for (EstudianteDiseño estudiantedis : Lista) {
             System.out.println("========================================");
             System.out.println("Nombre: " + estudiantedis.getNombre());
             System.out.println("Apellido: " + estudiantedis.getApellido());
@@ -137,7 +165,7 @@ public class Metodos {
 
     }
 
-    public LinkedList<TabletaGrafica> LLenarListaTableta(){
+    public LinkedList<TabletaGrafica> LLenarListaTableta() {
         LinkedList<TabletaGrafica> Lista = new LinkedList<>();
         boolean continuar = true;
         String Serial;
@@ -147,56 +175,72 @@ public class Metodos {
         int Almacenamiento;
         float Peso;
 
-            while (continuar) {
-                System.out.println("==================================");
-                System.out.println("=== Llenando lista de tabletas ===");
-                System.out.println(" Serial de la tableta");
-                Serial = sc.next();
-                System.out.println("Marca de la tableta");
-                Marca = sc.next();
-                System.out.println(" Tamaño de la tablet ");
-                Tamaño = sc.nextFloat();
-                System.out.println("Dame el precio de la tableta");
-                Precio = sc.nextFloat();
-                System.out.println("Almacenamiento de la tableta");
-                Almacenamiento = sc.nextInt();
-                System.out.println(" Cuanto pesa la tableta?");
-                Peso = sc.nextFloat();
-                System.out.println();
-                TabletaGrafica e = new TabletaGrafica(Serial, Marca, Tamaño, Precio, Almacenamiento, Peso);
-                Lista.add(e);
-                System.out.println(" Quieres agregar mas tabletas a la lista ?");
-                opt = sc.nextInt();
-                while (opt <= 0 || opt > 2) {
-                    System.out.println("opcion incorrecta");
-                    System.out.println("¿desea agregar mas computadores a la lista? 1: SI, 2: NO ");
-                    while (!sc.hasNextInt()) {
-                        System.out.println("ingrese una opcion valida");
-                    }
-                    opt = sc.nextInt();
-                }
-                if (opt == 2) {
-                    continuar = false;
-                }
+        while (continuar) {
+            System.out.println("==================================");
+            System.out.println("=== Llenando lista de tabletas ===");
+            System.out.println("Serial de la tableta");
+            Serial = sc.next();
+            System.out.println("Marca de la tableta");
+            Marca = sc.next();
+            System.out.println("Tamaño de la tablet ");
+            while (!sc.hasNextFloat()) {
+                System.out.println("el tamaño debe de ser un numero flotante");
+                sc.nextLine();
             }
+            Tamaño = sc.nextFloat();
+            System.out.println("Dame el precio de la tableta");
+            while (!sc.hasNextFloat()) {
+                System.out.println("el precio debe de ser un numero");
+                sc.nextLine();
+            }
+            Precio = sc.nextFloat();
+            System.out.println("Almacenamiento de la tableta");
+            while (!sc.hasNextInt()) {
+                System.out.println("el almacenamiento debe de ser un numero entero");
+                sc.nextLine();
+            }
+            Almacenamiento = sc.nextInt();
+            System.out.println("Cuanto pesa la tableta?");
+            while (!sc.hasNextFloat()) {
+                System.out.println("el peso debe de ser un numero float");
+                sc.nextLine();
+            }
+            Peso = sc.nextFloat();
+            System.out.println();
+            TabletaGrafica e = new TabletaGrafica(Serial, Marca, Tamaño, Precio, Almacenamiento, Peso);
+            Lista.add(e);
+            System.out.println(" Quieres agregar mas tabletas a la lista ? 1: SI, 2:NO ");
+            opt = sc.nextInt();
+            while (opt <= 0 || opt > 2) {
+                System.out.println("opcion incorrecta");
+                System.out.println("¿desea agregar mas tabletas a la lista? 1: SI, 2: NO ");
+                while (!sc.hasNextInt()) {
+                    System.out.println("ingrese una opcion valida");
+                }
+                opt = sc.nextInt();
+            }
+            if (opt == 2) {
+                continuar = false;
+            }
+        }
         return Lista;
     }
 
-    public void MostrarlistaTABLET(LinkedList<TabletaGrafica> Lista){
+    public void MostrarlistaTABLET(LinkedList<TabletaGrafica> Lista) {
 
-        for(TabletaGrafica TabletaGrafica : Lista){
+        for (TabletaGrafica TabletaGrafica : Lista) {
             System.out.println("========================================");
             System.out.println("Serial: " + TabletaGrafica.getSerial());
             System.out.println("Marca: " + TabletaGrafica.getMarca());
-            System.out.println("Tamaño: " + TabletaGrafica.getTamaño());
-            System.out.println("Precio: " + TabletaGrafica.getPrecio());
-            System.out.println("Alamacenamiento: " + TabletaGrafica.getAlmacenamiento());
-            System.out.println("Peso: " + TabletaGrafica.getPeso());
+            System.out.println("Tamaño: " + TabletaGrafica.getTamaño() + "pulgadas");
+            System.out.println("Precio: " + TabletaGrafica.getPrecio() + "$");
+            System.out.println("Alamacenamiento: " + TabletaGrafica.getAlmacenamiento() + "gb");
+            System.out.println("Peso: " + TabletaGrafica.getPeso() + "Kg");
         }
 
     }
 
-    public LinkedList<ComputadorPortatil> LLenarListaComputadores(){
+    public LinkedList<ComputadorPortatil> LLenarListaComputadores() {
         LinkedList<ComputadorPortatil> Lista = new LinkedList<>();
         boolean continuar = true;
         String Serial;
@@ -205,50 +249,50 @@ public class Metodos {
         float Precio;
         String So;
         String Procesador;
-            while (continuar) {
-                System.out.println("======================================");
-                System.out.println("=== Llenando lista de computadores === ");
-                System.out.println("Dime el serial del computador");
-                Serial = sc.next();
-                System.out.println(" Dime la marca del computador");
-                Marca = sc.next();
-                System.out.println("Que tamaño tiene la pantalla del compurador (Recuerda que son pulgadas)");
-                Tamaño = sc.nextFloat();
-                System.out.println("DIme el precio del computador");
-                Precio = sc.nextFloat();
-                System.out.println("DImke el sistema operativo del computador");
-                So = sc.next();
-                System.out.println("DIme el procesador del computador");
-                Procesador = sc.next();
-                System.out.println();
-                ComputadorPortatil e = new ComputadorPortatil(Serial, Marca, Tamaño, Precio, So, Procesador);
-                Lista.add(e);
-                System.out.println(" Quieres agregar mas computadores a la lista ?");
+        while (continuar) {
+            System.out.println("======================================");
+            System.out.println("=== Llenando lista de computadores === ");
+            System.out.println("Dime el serial del computador");
+            Serial = sc.next();
+            System.out.println(" Dime la marca del computador");
+            Marca = sc.next();
+            System.out.println("Que tamaño tiene la pantalla del compurador (Recuerda que son pulgadas)");
+            Tamaño = sc.nextFloat();
+            System.out.println("DIme el precio del computador");
+            Precio = sc.nextFloat();
+            System.out.println("DImke el sistema operativo del computador");
+            So = sc.next();
+            System.out.println("DIme el procesador del computador");
+            Procesador = sc.next();
+            System.out.println();
+            ComputadorPortatil e = new ComputadorPortatil(Serial, Marca, Tamaño, Precio, So, Procesador);
+            Lista.add(e);
+            System.out.println(" Quieres agregar mas computadores a la lista ? 1: SI, 2: NO ");
+            opt = sc.nextInt();
+            while (opt <= 0 || opt > 2) {
+                System.out.println("opcion incorrecta");
+                System.out.println("¿desea agregar mas computadores a la lista? 1: SI, 2: NO ");
+                while (!sc.hasNextInt()) {
+                    System.out.println("ingrese una opcion valida");
+                }
                 opt = sc.nextInt();
-                while (opt <= 0 || opt > 2) {
-                    System.out.println("opcion incorrecta");
-                    System.out.println("¿desea agregar mas computadores a la lista? 1: SI, 2: NO ");
-                    while (!sc.hasNextInt()) {
-                        System.out.println("ingrese una opcion valida");
-                    }
-                    opt = sc.nextInt();
-                }
-                if (opt == 2) {
-                    continuar = false;
-                }
+            }
+            if (opt == 2) {
+                continuar = false;
+            }
 
         }
         return Lista;
     }
 
-    public void MostrarlistaCOMPUTADORES(LinkedList<ComputadorPortatil> Lista){
+    public void MostrarlistaCOMPUTADORES(LinkedList<ComputadorPortatil> Lista) {
 
-        for(ComputadorPortatil Computador : Lista){
+        for (ComputadorPortatil Computador : Lista) {
             System.out.println("====================");
             System.out.println("Serial " + Computador.getSerial());
             System.out.println("Marca " + Computador.getMarca());
-            System.out.println("Tamaño " + Computador.getTamaño());
-            System.out.println("Precio " + Computador.getPrecio());
+            System.out.println("Tamaño " + Computador.getTamaño() + "pulgadas");
+            System.out.println("Precio " + Computador.getPrecio() + "$");
             System.out.println("Sistema OPerativo " + Computador.getSo());
             System.out.println("Procesador " + Computador.getProcesador());
         }

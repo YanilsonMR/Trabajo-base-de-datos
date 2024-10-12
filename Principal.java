@@ -3,9 +3,9 @@ import java.util.Scanner;
 public class Principal {
     public static void main(String[] args) {
     LinkedList<ComputadorPortatil> listaComputador = new LinkedList<>();
-    LinkedList<TabletaGrafica> listaTableta = new LinkedList<>();
     LinkedList<EstudianteDiseño> listaDIS = new LinkedList<>();
     LinkedList<EstudianteIngenieria> listaING = new LinkedList<>();
+    LinkedList<TabletaGrafica> listatableta = new LinkedList<>();
     Metodos m = new Metodos();
     boolean bandera = true;
     int opt;
@@ -44,20 +44,21 @@ public class Principal {
                     m.MostrarlistaCOMPUTADORES(listaComputador);
                     break;
                 case 7:
-                    listaTableta = m.LLenarListaTableta();
+                    listatableta = m.LLenarListaTableta();
                     break;
                 case 8:
-                    m.LLenarListaTableta();
+                    m.MostrarlistaTABLET(listatableta);
                     break;
                 case 9:
                     System.out.println("Saliendo del programa...");
+                    bandera = false;
                     break;
 
                 default:
                     System.out.println("Opción no válida, intente de nuevo.");
             }
         }
-                   
+        sc.close();         
     }
 
 }
