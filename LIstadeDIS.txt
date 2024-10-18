@@ -1,0 +1,14 @@
+Nombre: Victor
+Apellido: Serna
+Telefono 4561237
+Modalida de studio presencial
+Cantidad de materias: 3
+Serial: 356235
+---------------------------------------
+Nombre: Andres
+Apellido: paz
+Telefono 486412634
+Modalida de studio presencial
+Cantidad de materias: 3
+Serial: 12354
+---------------------------------------
