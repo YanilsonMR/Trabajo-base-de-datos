@@ -8,6 +8,7 @@ public class Principal {
         LinkedList<EstudianteIngenieria> listaING = new LinkedList<>();
         LinkedList<TabletaGrafica> listatableta = new LinkedList<>();
         Metodos m = new Metodos();
+        Exportaciones e = new Exportaciones();
         boolean bandera = true;
         int opt;
         Scanner sc = new Scanner(System.in);
@@ -86,23 +87,23 @@ public class Principal {
                     opt = sc.nextInt();
                     switch (opt) {
                         case 1:
-                            m.exportarING(listaING);
+                            e.exportarING(listaING);
                             break;
                         case 2:
-                            m.exportarDIS(listaDIS);
+                            e.exportarDIS(listaDIS);
                             break;
                         case 3:
-                            m.exportarPC(listaComputador);
+                            e.exportarPC(listaComputador);
                             break;
                         case 4:
-                            m.exportarTABLETA(listatableta);
+                            e.exportarTABLETA(listatableta);
                             break;
                         case 5:
-                            m.exportarING(listaING);
-                            m.exportarDIS(listaDIS);
-                            m.exportarPC(listaComputador);
-                            m.exportarTABLETA(listatableta);
-                        break;
+                            e.exportarING(listaING);
+                            e.exportarDIS(listaDIS);
+                            e.exportarPC(listaComputador);
+                            e.exportarTABLETA(listatableta);
+                            break;
 
                         default:
                             System.out.println("Opcion no validad. Intenta de nuevo. ");
@@ -110,7 +111,36 @@ public class Principal {
                     }
                     break;
                 case 4:
-
+                    System.out.println("aqui podras importar las diferentes listas");
+                    System.out.println("1. IMPORTAR LA LISTA DE ESTUDIANTES DE INGENIERIA");
+                    System.out.println("2. IMPORTAR LISTA DE ESTUDIANTES DE DISEÑO");
+                    System.out.println("3. IMPORTAR LISTA DE COMPUTADORES");
+                    System.out.println("4. IMPORTAR LISTA DE TABLETAS");
+                    System.out.println("5. IMPORTAR TODAS LAS LISTAS");
+                    opt = sc.nextInt();
+                        switch (opt) {
+                            case 1:
+                                listaING = m.importarING();
+                                break;
+                            case 2:
+                                listaDIS = m.importarDIS();
+                                break;
+                            case 3:
+                                listaComputador = m.importarPC();
+                                break;  
+                            case 4:
+                                listatableta = m.importarTG();
+                                break;
+                            case 5:
+                                listaING = m.importarING();
+                                listaDIS = m.importarDIS();
+                                listaComputador = m.importarPC();
+                                listatableta = m.importarTG();
+                                break;                    
+                            default:
+                                System.out.println("Opcion no validad. Intenta de nuevo. ");
+                                break;
+                        }
                     break;
                 case 5:
                     System.out.println("Saliendo del programa...");

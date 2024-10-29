@@ -1,8 +1,4 @@
 
-//import java.io.BufferedReader;
-//import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.LinkedList;
 import java.util.Scanner;
 
@@ -106,6 +102,7 @@ public class Metodos {
         int Serial;
 
         while (continuar) {
+            Metodos a = new Metodos();
             System.out.println("=============================================================================");
             System.out.println("========== Hola, aqui ingresaras los datos del estudiante de Diseño =========");
             System.out.println("Ingrese el nombre del estudiante");
@@ -116,7 +113,9 @@ public class Metodos {
             Apellido = sc.next();
             System.out.println("Ingrese el telefono del estudiante");
             Telefono = sc.next();
+
             System.out.println("Ingrese la modalidad de estudio del estudiante");
+            String palabra = Modalidad(opt);
             Modalidadestudio = sc.next();
 
             System.out.println("¿Cuantas asignaturas esta cursando el estudiante?");
@@ -162,7 +161,7 @@ public class Metodos {
             System.out.println("========================================");
             System.out.println("Nombre: " + estudiantedis.getNombre());
             System.out.println("Apellido: " + estudiantedis.getApellido());
-            System.out.println("Telefono " + estudiantedis.getTelefono());
+            System.out.println("Telefono: " + estudiantedis.getTelefono());
             System.out.println("Modalidad del estudiante: " + estudiantedis.getModalidadestudio());
             System.out.println("Asignaturas cursando: " + estudiantedis.getCantasignatura());
             System.out.println("Serial: " + estudiantedis.getSerial());
@@ -303,118 +302,57 @@ public class Metodos {
         }
     }
 
-    public void exportarING(LinkedList<EstudianteIngenieria> lista) {
-
-        LinkedList<EstudianteIngenieria> listaING = new LinkedList<>();
-
-        if (listaING.isEmpty()) {
-            Metodos m = new Metodos();
-            listaING = m.LLenarListaEstudianteING();
-        } else {
-            try (FileWriter escriba = new FileWriter("LIstadeING.txt")) {
-                for (EstudianteIngenieria estudiante : lista) {
-                    escriba.write("Nombre: " + estudiante.getNombre() + "\n");
-                    escriba.write("Cedula: " + estudiante.getCedula() + "\n");
-                    escriba.write("Apellido: " + estudiante.getApellido() + "\n");
-                    escriba.write("Telefono: " + estudiante.getTelefono() + "\n");
-                    escriba.write("Semestre: " + estudiante.getNumerosemestre() + "\n");
-                    escriba.write("Promedio: " + estudiante.getPromedio() + "\n");
-                    escriba.write("Serial: " + estudiante.getSerial() + "\n");
-                    escriba.write("---------------------------------------\n");
-
-                }
-
-                System.out.println("LIsta de estudiantes de ingenieria exportado correctamente ...");
-            } catch (IOException e) {
-                e.printStackTrace();
+    public String Modalidad(int numero) {
+        {
+            String palabra;
+            System.out.print("Selecciona la modalidad del estudiante");
+            System.out.println("1. PRESENCIAL");
+            System.out.println("2.VIRTUAL");
+            opt = sc.nextInt();
+            switch (opt) {
+                case 1:
+                    palabra = "Presencial";
+                    break;
+                case 2:
+                    palabra = "Virtual";
+                    break;
+                default:
+                    palabra = "Número no definido";
+                    break;
             }
-        }
-
-    }
-
-    public void exportarDIS(LinkedList<EstudianteDiseño> lista) {
-
-        LinkedList<EstudianteDiseño> listaDIS = new LinkedList<>();
-
-        if (listaDIS.isEmpty()) {
-            Metodos m = new Metodos();
-            listaDIS = m.LLenarListaEstudianteDIS();
-        } else {
-            try (FileWriter escriba = new FileWriter("LIstadeDIS.txt")) {
-                for (EstudianteDiseño estudianted : lista) {
-                    escriba.write("Nombre: " + estudianted.getNombre() + "\n");
-                    escriba.write("Apellido: " + estudianted.getApellido() + "\n");
-                    escriba.write("Telefono " + estudianted.getTelefono() + "\n");
-                    escriba.write("Modalida de studio " + estudianted.getModalidadestudio() + "\n");
-                    escriba.write("Cantidad de materias: " + estudianted.getCantasignatura() + "\n");
-                    escriba.write("Serial: " + estudianted.getSerial() + "\n");
-                    escriba.write("---------------------------------------\n");
-
-                }
-
-                System.out.println("LIsta de estudiantes de diseño ha sido exportada correctamente ...");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            return palabra;
         }
     }
 
-    public void exportarPC(LinkedList<ComputadorPortatil> lista) {
+    //INVOCANDO EXPORTACIONES
 
-        LinkedList<ComputadorPortatil> listaComputador = new LinkedList<>();
+    Exportaciones e = new Exportaciones();
 
-        if (listaComputador.isEmpty()) {
-            Metodos m = new Metodos();
-            System.out.println("las lista de computadores esta vacia");
-            System.out.println("porfavor llenar la lista con los computadores disponibles");
+    // INVOCANDO IMPORTACIONES
+    Importaciones i = new Importaciones();
 
-            listaComputador = m.LLenarListaComputadores();
-        } else {
-            try (FileWriter escriba = new FileWriter("ListaPortatiles.txt")) {
-                for (ComputadorPortatil computador : lista) {
-                    escriba.write("serial: " + computador.getSerial() + "\n");
-                    escriba.write("Marca: " + computador.getMarca() + "\n");
-                    escriba.write("Tamaño: " + computador.getTamaño() + "\n");
-                    escriba.write("Precio: " + computador.getPrecio() + "\n");
-                    escriba.write("Sistema operativo: " + computador.getSo() + "\n");
-                    escriba.write("Procesador: " + computador.getProcesador() + "\n");
-                    escriba.write("---------------------------------------\n");
-
-                }
-
-                System.out.println("LIsta de computadores ha sido exportado correctamente ...");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+    public LinkedList<EstudianteIngenieria> importarING() {
+        LinkedList<EstudianteIngenieria> lista;
+        lista = i.ImportarING();
+        return lista;
     }
 
-    public void exportarTABLETA(LinkedList<TabletaGrafica> lista) {
+    public LinkedList<EstudianteDiseño> importarDIS(){
+        LinkedList<EstudianteDiseño> lista;
+        lista = i.ImportarDIS();
+        return lista;
+    }
 
-        LinkedList<TabletaGrafica> listaTABLETA = new LinkedList<>();
+    public LinkedList<ComputadorPortatil> importarPC(){
+        LinkedList<ComputadorPortatil> lista;
+        lista = i.ImportarPC();
+        return lista;
+    }
 
-        if (listaTABLETA.isEmpty()) {
-            Metodos m = new Metodos();
-            listaTABLETA = m.LLenarListaTableta();
-        } else {
-            try (FileWriter escriba = new FileWriter("ListaTabletas.txt")) {
-                for (TabletaGrafica tableta : lista) {
-                    escriba.write("Serial: " + tableta.getSerial() + "\n");
-                    escriba.write("Marca: " + tableta.getMarca() + "\n");
-                    escriba.write("Tamaño: " + tableta.getTamaño() + "\n");
-                    escriba.write("Precio: " + tableta.getPrecio() + "\n");
-                    escriba.write("Almacenamiento: " + tableta.getAlmacenamiento() + "\n");
-                    escriba.write("Peso: " + tableta.getPeso() + "\n");
-                    escriba.write("---------------------------------------\n");
-
-                }
-
-                System.out.println("LIsta de tabletas ha sido exportado correctamente ...");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
+    public LinkedList<TabletaGrafica> importarTG(){
+        LinkedList<TabletaGrafica> lista;
+        lista = i.ImportarTABLETA();
+        return lista;
     }
 
 }
