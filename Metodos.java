@@ -32,8 +32,16 @@ public class Metodos {
             System.out.println("Ingrese la cedula");
             Cedula = sc.next();
             System.out.println("ingrese el Apellido");
+            while (!sc.hasNext()) {
+                System.out.println("Los apellidos no deben de tener numeros o caracteres especiales");
+                sc.nextLine();
+            }
             Apellido = sc.next();
             System.out.println("Ingrese el telefono del estudiante");
+            while (!sc.hasNextInt()) {
+                System.out.println("el semestre debe de ser un numero entero");
+                sc.nextLine();
+            }
             Telefono = sc.next();
             System.out.println("Ingrese el semestre del estudiante");
             while (!sc.hasNextInt()) {
@@ -52,8 +60,7 @@ public class Metodos {
             System.out.println("Ingrese el Serial del estudiante");
             Serial = sc.next();
             System.out.println();
-            EstudianteIngenieria e = new EstudianteIngenieria(Nombre, Cedula, Apellido, Telefono, Numerosemestre,
-                    Promedio, Serial);
+            EstudianteIngenieria e = new EstudianteIngenieria(Nombre, Cedula, Apellido, Telefono, Numerosemestre, Promedio, Serial);
             Lista.add(e);
             System.out.println("¿desea agregar mas estudiantes a la lista? 1: SI, 2: NO ");
             opt = sc.nextInt();
@@ -114,7 +121,7 @@ public class Metodos {
             System.out.println("Ingrese el telefono del estudiante");
             Telefono = sc.next();
 
-            System.out.println("Ingrese la modalidad de estudio del estudiante");
+            System.out.println("Ingrese la modalidad de estudio del estudiante");            
             String palabra = Modalidad(opt);
             Modalidadestudio = sc.next();
 
@@ -306,7 +313,7 @@ public class Metodos {
         {
             String palabra;
             System.out.print("Selecciona la modalidad del estudiante");
-            System.out.println("1. PRESENCIAL");
+            System.out.println("1.PRESENCIAL");
             System.out.println("2.VIRTUAL");
             opt = sc.nextInt();
             switch (opt) {
@@ -324,9 +331,6 @@ public class Metodos {
         }
     }
 
-    //INVOCANDO EXPORTACIONES
-
-    Exportaciones e = new Exportaciones();
 
     // INVOCANDO IMPORTACIONES
     Importaciones i = new Importaciones();

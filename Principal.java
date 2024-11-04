@@ -27,7 +27,7 @@ public class Principal {
                     System.out.println("2. LLENAR LISTA DE ESTUDIANTES DE DISEÑO");
                     System.out.println("3. LLENAR LSITA DE COMPUTADORES");
                     System.out.println("4. LLENAR LISTA DE TABLETAS");
-                    System.out.println("");
+                    System.out.println("5. SALIR DEL PROGRAMA");
                     opt = sc.nextInt();
                     switch (opt) {
                         case 1:
@@ -41,6 +41,11 @@ public class Principal {
                             break;
                         case 4:
                             listatableta = m.LLenarListaTableta();
+                            break;
+                        case 5:
+                            System.out.println("Saliendo del programa ...");
+                            bandera = false;
+
                             break;
 
                         default:
@@ -69,6 +74,10 @@ public class Principal {
                             break;
                         case 4:
                             m.MostrarlistaTABLET(listatableta);
+                            break;
+                        case 5:
+                            System.out.println("Saliendo del programa ...");
+                            bandera = false;
                             break;
 
                         default:
@@ -117,6 +126,7 @@ public class Principal {
                     System.out.println("3. IMPORTAR LISTA DE COMPUTADORES");
                     System.out.println("4. IMPORTAR LISTA DE TABLETAS");
                     System.out.println("5. IMPORTAR TODAS LAS LISTAS");
+                    System.out.println("6. SALIR DEL PROGRAMA");
                     opt = sc.nextInt();
                         switch (opt) {
                             case 1:
@@ -136,7 +146,11 @@ public class Principal {
                                 listaDIS = m.importarDIS();
                                 listaComputador = m.importarPC();
                                 listatableta = m.importarTG();
-                                break;                    
+                                break;     
+                            case 6:
+                            System.out.println("Saliendo del programa...");
+                            bandera = false;
+                                break;               
                             default:
                                 System.out.println("Opcion no validad. Intenta de nuevo. ");
                                 break;
