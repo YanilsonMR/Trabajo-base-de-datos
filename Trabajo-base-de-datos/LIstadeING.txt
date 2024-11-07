@@ -1,0 +1,8 @@
+Nombre: Yanilson
+Cedula: 123456789
+Apellido: Moreno
+Telefono: 987654321
+Semestre: 4
+Promedio: 3.5
+Serial: sf56
+---------------------------------------
